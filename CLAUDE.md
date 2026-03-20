@@ -211,9 +211,11 @@ Se invocan con `/nombre-skill` en Claude Code.
 |-------|------|--------------|
 | `vercel-react-best-practices` | `~\.agents\skills\vercel-react-best-practices` | Al crear componentes React, hooks, contextos o optimizar rendimiento |
 | `web-design-guidelines` | `~\.agents\skills\web-design-guidelines` | Al diseñar secciones del portfolio, landings o cualquier UI pública |
+| `tailwind-v4-shadcn` | `~\.agents\skills\tailwind-v4-shadcn` | Al trabajar con Tailwind v4, variables CSS o instalar componentes shadcn — nuestro stack exacto |
+| `tailwindcss-mobile-first` | `~\.agents\skills\tailwindcss-mobile-first` | Al maquetar cualquier componente — garantiza enfoque mobile-first |
+| `tailwind-design-system` | `~\.agents\skills\tailwind-design-system` | Al definir tokens de diseño, escalas o sistema de colores global |
 | `e2e-testing-patterns` | `~\.agents\skills\e2e-testing-patterns` | Al escribir tests E2E con Playwright |
 | `laravel-specialist` | `~\.agents\skills\laravel-specialist` | Al crear modelos, migraciones, controladores, rutas o auth en Laravel |
-| `tailwind-design-system` | `~\.agents\skills\tailwind-design-system` | Al definir tokens de diseño, variables CSS, escalas o sistema de colores |
 | `solid` | `~\.agents\skills\solid` | Al refactorizar o diseñar arquitectura — aplica SOLID y clean code |
 | `simplify` | builtin | Tras terminar una feature, para revisar y simplificar el código generado |
 
