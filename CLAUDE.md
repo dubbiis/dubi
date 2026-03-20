@@ -204,22 +204,22 @@ El `HandleInertiaRequests` se registra como middleware web en `bootstrap/app.php
 
 ## Skills Activos
 
-Skills instalados globalmente. Invocarlos según el contexto:
+Todos los skills están en `C:\Users\dagar\.agents\skills\`.
+Se invocan con `/nombre-skill` en Claude Code.
 
-| Skill | Cuándo usarlo |
-|-------|--------------|
-| `vercel-react-best-practices` | Al crear componentes React, hooks, contextos o optimizar rendimiento |
-| `web-design-guidelines` | Al diseñar secciones del portfolio, landings o cualquier UI pública |
-| `tailwind-v4-shadcn` | Al trabajar con clases Tailwind v4, variables CSS o instalar componentes shadcn |
-| `e2e-testing-patterns` | Al escribir tests E2E con Playwright |
-| `laravel-specialist` | Al crear modelos, migraciones, controladores, rutas o auth en Laravel |
-| `tailwind-design-system` | Al definir tokens de diseño, escalas o sistema de colores |
-| `solid` | Al refactorizar o diseñar arquitectura — aplica SOLID y clean code |
-| `simplify` | Tras terminar una feature, para revisar y simplificar el código generado |
+| Skill | Ruta | Cuándo usarlo |
+|-------|------|--------------|
+| `vercel-react-best-practices` | `~\.agents\skills\vercel-react-best-practices` | Al crear componentes React, hooks, contextos o optimizar rendimiento |
+| `web-design-guidelines` | `~\.agents\skills\web-design-guidelines` | Al diseñar secciones del portfolio, landings o cualquier UI pública |
+| `e2e-testing-patterns` | `~\.agents\skills\e2e-testing-patterns` | Al escribir tests E2E con Playwright |
+| `laravel-specialist` | `~\.agents\skills\laravel-specialist` | Al crear modelos, migraciones, controladores, rutas o auth en Laravel |
+| `tailwind-design-system` | `~\.agents\skills\tailwind-design-system` | Al definir tokens de diseño, variables CSS, escalas o sistema de colores |
+| `solid` | `~\.agents\skills\solid` | Al refactorizar o diseñar arquitectura — aplica SOLID y clean code |
+| `simplify` | builtin | Tras terminar una feature, para revisar y simplificar el código generado |
 
 **MCPs activos:**
-- `shadcn` (proyecto) — instalar componentes shadcn/animate-ui
-- `playwright` (global) — testing visual en navegador real
+- `shadcn` (proyecto, `.claude/.mcp.json`) — instalar componentes shadcn/animate-ui
+- `playwright` (`~\.claude\mcp.json`) — testing visual en navegador real, verificar responsive
 
 ---
 
