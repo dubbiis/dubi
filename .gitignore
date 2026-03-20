@@ -1,4 +1,6 @@
 DATOS-CONEXION.md
+instrucciones.md
+.claude/settings.local.json
 *.log
 .DS_Store
 .env

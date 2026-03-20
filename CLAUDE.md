@@ -187,6 +187,14 @@ El entry point de Vite debe ser `.jsx`, no `.js`. El `vite.config.js` apunta a `
 ### 4. Middleware Inertia registrado en bootstrap/app.php
 El `HandleInertiaRequests` se registra como middleware web en `bootstrap/app.php`, no en `Kernel.php` (que ya no existe en Laravel 11+).
 
+### 5. config:cache debe ejecutarse en runtime, NO en el build de Docker
+EasyPanel inyecta las variables de entorno al **iniciar el contenedor**, no durante el build. Si se ejecuta `php artisan config:cache` en el `Dockerfile` (RUN), la configuración se cachea con valores vacíos y Laravel ignora las env vars en producción.
+
+**Solución:** `docker/entrypoint.sh` ejecuta config:cache, route:cache, view:cache y migrate en el arranque del contenedor, cuando las vars ya están disponibles.
+
+### 6. Variables de entorno — DATOS-CONEXION.md está en .gitignore
+El archivo `DATOS-CONEXION.md` con credenciales reales **no se sube al repo**. Está en `.gitignore`. Las credenciales de producción se configuran como variables de entorno en EasyPanel directamente.
+
 ---
 
 ## Diseño Responsive — Requisito Obligatorio
@@ -225,9 +233,38 @@ Se invocan con `/nombre-skill` en Claude Code.
 
 ---
 
+## Logs — Requisito Obligatorio
+
+- **Entrypoint bash:** usar `echo "[entrypoint] ..."` en cada paso crítico (ya implementado en `docker/entrypoint.sh`)
+- **PHP:** usar `Log::info()` / `Log::error()` en controladores y procesos críticos
+- **JS/React:** usar `console.log()` en desarrollo para depuración
+- El objetivo es poder diagnosticar errores mirando los logs sin necesidad de reproducir el problema
+
+---
+
+## README.md — Requisito Obligatorio
+
+**Cada commit que cambie funcionalidad debe actualizar `README.md`** en el mismo commit. El README es la fuente de verdad del estado actual del proyecto visible en GitHub.
+
+---
+
 ## Git y Deploy
 
-- **No hacer force push a master.**
-- **Commits en español**, descriptivos.
+- **No hacer force push a master** (excepción única ya realizada: limpieza de historial con credenciales expuestas).
+- **Commits en español**, descriptivos, atómicos (un cambio lógico por commit).
 - **Subir al repo después de cada cambio.** Cada modificación va a GitHub en el mismo momento.
-- Cada commit que cambie funcionalidad debe actualizar también este CLAUDE.md si aplica.
+- Cada commit que cambie funcionalidad debe actualizar también `README.md` y este `CLAUDE.md` si aplica.
+
+---
+
+## Archivos Clave de Configuración
+
+| Archivo | Por qué importa |
+|---------|----------------|
+| `vite.config.js` | Entry point `.jsx` (no `.js`), alias `@/` → `resources/js/`, plugins React + Tailwind |
+| `resources/css/app.css` | Variables CSS shadcn + `@theme inline` de Tailwind v4 |
+| `components.json` | Registro `@animate-ui` para instalar componentes con el CLI/MCP de shadcn |
+| `bootstrap/app.php` | Registro del middleware `HandleInertiaRequests` |
+| `docker/entrypoint.sh` | Ejecuta config:cache + migrate al arrancar el contenedor (runtime, no build) |
+| `.claude/.mcp.json` | MCP de shadcn para este proyecto |
+| `~/.claude/mcp.json` | MCP de Playwright (global, todos los proyectos) |
