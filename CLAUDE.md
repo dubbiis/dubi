@@ -189,6 +189,19 @@ El `HandleInertiaRequests` se registra como middleware web en `bootstrap/app.php
 
 ---
 
+## Diseño Responsive — Requisito Obligatorio
+
+**Todo el proyecto debe verse correctamente en móvil, tablet y escritorio.** Portfolio y landings son páginas públicas — la mayoría de visitas llegarán desde móvil.
+
+- Enfoque **mobile-first**: diseñar primero para móvil y escalar hacia arriba
+- Breakpoints Tailwind: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
+- Testear siempre en al menos: 375px (iPhone SE), 768px (tablet), 1280px (escritorio)
+- Nunca usar anchos o alturas fijas sin su variante responsive
+- Imágenes con `max-w-full` y `object-cover` por defecto
+- El Playwright MCP se usará para verificar el layout en diferentes viewports antes de hacer push
+
+---
+
 ## Skills Activos
 
 Skills instalados globalmente. Invocarlos según el contexto:
